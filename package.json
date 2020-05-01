@@ -26,8 +26,9 @@
     "patch": "npm version patch && npm publish",
     "minor": "npm version minor && npm publish",
     "major": "npm version major && npm publish",
-    "prepublish": "npm run lint && npm test && npm run build",
-    "postpublish": "git push origin master --follow-tags"
+    "prepublish": "npm run snyk-protect && npm run lint && npm test && npm run build",
+    "postpublish": "git push origin master --follow-tags",
+    "snyk-protect": "snyk protect"
   },
   "lint-staged": {
     "*.js": [
@@ -47,7 +48,8 @@
     "reloadux"
   ],
   "dependencies": {
-    "babel-preset-react-native": "^1.9.1"
+    "babel-preset-react-native": "^1.9.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -85,5 +87,6 @@
     "redux": "^2.0.0 || ^3.0.0",
     "redux-saga": "^0.14.3",
     "react-redux": "^5.0.0"
-  }
+  },
+  "snyk": true
 }
